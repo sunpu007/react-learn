@@ -3,9 +3,12 @@ import React, { Component } from 'react'
 class App extends Component {
   render () {
     return (
-      <div>
-        <h4>App</h4>
-      </div>
+      <ul className="my-list">
+        <li>test01</li>
+        <li>test02</li>
+        <li>test03</li>
+        <li>test04</li>
+      </ul>
     )
   }
 }
