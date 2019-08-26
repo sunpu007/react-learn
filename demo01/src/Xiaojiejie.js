@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Axios from 'axios'
+import {CSSTransition , TransitionGroup} from 'react-transition-group'
 import XiaojiejieItem from './XiaojiejieItem'
 import Boss from './Boss'
 import './style.css'
@@ -33,7 +34,7 @@ class Xiaojiejie extends Component {
   // }
   componentDidMount () {
     Axios.get('https://www.easy-mock.com/mock/5d62c7e39d7a4c353eb2120b/ReactDemo01/xiaojiejie').then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       this.setState({
         list: res.data.data
       })
@@ -57,23 +58,32 @@ class Xiaojiejie extends Component {
           <button onClick={this.addList.bind(this)}>增加服务</button>
         </div>
         <ul ref={ul=>{this.ul=ul}}>
-          {
-            this.state.list.map((item, index) => {
-              return (
-                // <li
-                //   key={index}
-                //   onClick={this.deleteItem.bind(this, index)}
-                //   dangerouslySetInnerHTML={{__html:item}}>
-                // </li>
-                <XiaojiejieItem
-                  key={index}
-                  content={item}
-                  index={index}
-                  deleteItem={this.deleteItem.bind(this)}
-                />
-              )
-            })
-          }
+          <TransitionGroup>
+            {
+              this.state.list.map((item, index) => {
+                return (
+                  // <li
+                  //   key={index}
+                  //   onClick={this.deleteItem.bind(this, index)}
+                  //   dangerouslySetInnerHTML={{__html:item}}>
+                  // </li>
+                  <CSSTransition
+                    timeout={1000}
+                    classNames="boss-text"
+                    unmountOnExit
+                    appear={true}
+                    key={index}
+                  >
+                    <XiaojiejieItem
+                      content={item}
+                      index={index}
+                      deleteItem={this.deleteItem.bind(this)}
+                    />
+                  </CSSTransition>
+                )
+              })
+            }
+          </TransitionGroup>
         </ul>
         <Boss />
         {/* <img className="img" src="/logo512.png" alt="" /> */}

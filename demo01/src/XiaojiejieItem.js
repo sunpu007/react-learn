@@ -20,7 +20,7 @@ class XiaojiejieItem extends Component {
     return this.props.content!==nextProps.content
   }
   render() {
-    console.log('child-render...')
+    // console.log('child-render...')
     return (
       <li onClick={this.handleClick}>
         {this.props.avname}为您做-{this.props.content}
