@@ -5,7 +5,7 @@ import store from './store'
 /**
  * getListAction
  */
-import { changeInputAction, addItemAction, deleteItemAction, getTodoList } from './store/actionCreators'
+import { changeInputAction, addItemAction, deleteItemAction, getMyListAction } from './store/actionCreators'
 import TodoListUi from './TodoListUi'
 
 class TodoList extends Component {
@@ -34,8 +34,10 @@ class TodoList extends Component {
     )
   }
   componentDidMount () {
-    const action = getTodoList()
+    const action = getMyListAction()
     store.dispatch(action)
+    // const action = getTodoList()
+    // store.dispatch(action)
     // Axios.get('https://www.easy-mock.com/mock/5d62c7e39d7a4c353eb2120b/ReactDemo01/getList').then(res => {
     //   const action = getListAction(res.data.data.list)
     //   store.dispatch(action)

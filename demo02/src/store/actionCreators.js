@@ -1,4 +1,4 @@
-import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST } from './actionTypes'
+import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST, GET_MY_LIST } from './actionTypes'
 import Axios from 'axios'
 
 export const changeInputAction = (value) => ({
@@ -28,3 +28,7 @@ export const getTodoList = () => {
     })
   }
 }
+
+export const getMyListAction = () => ({
+  type: GET_MY_LIST
+})
