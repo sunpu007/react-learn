@@ -6,13 +6,25 @@ import Workplace from './Pages/Workplace'
 import './index.css'
 
 function AppRouter () {
+  const routeConfig = [
+    { path: '/', title: '博客首页', exact: true, component: Index },
+    { path: '/video/', title: '视频教程', exact: false, component: Video },
+    { path: '/workplace/', title: '视频教程', exact: false, component: Workplace }
+  ]
   return (
     <Router>
       <div className="mainDiv">
         <div className="leftNav">
           <h3>一级导航</h3>
           <ul>
-            <li>
+            {
+              routeConfig.map((item, index) => {
+                return (
+                  <li key={index}><Link to={item.path}>{item.title}</Link></li>
+                )
+              })
+            }
+            {/* <li>
               <Link to="/">博客首页</Link>
             </li>
             <li>
@@ -20,13 +32,20 @@ function AppRouter () {
             </li>
             <li>
               <Link to="/workplace/">视频教程</Link>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="rightMain">
-          <Route path="/" exact component={Index} />
+          {
+            routeConfig.map((item, index) => {
+              return (
+                <Route key={index} path={item.path} exact={item.exact} component={item.component} />
+              )
+            })
+          }
+          {/* <Route path="/" exact component={Index} />
           <Route path="/video/" component={Video} />
-          <Route path="/workplace/" component={Workplace} />
+          <Route path="/workplace/" component={Workplace} /> */}
         </div>
       </div>
     </Router>
