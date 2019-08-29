@@ -1,27 +1,19 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
-const Index = () => {
-  return (
-    <h1>index</h1>
-  )
-}
-
-const List = () => {
-  return (
-    <h1>list</h1>
-  )
-}
+import { BrowserRouter as Router, Route } from 'react-router-dom' //Link
+import Index from './Pages/Index'
+import List from './Pages/List'
+import Home from './Pages/Home'
 
 const AppRouter = () => {
   return (
     <Router>
-      <ul>
+      {/* <ul>
         <li><Link to='/'>首页</Link></li>
-        <li><Link to='/list/'>列表</Link></li>
-      </ul>
+        <li><Link to='/list/123'>列表</Link></li>
+      </ul> */}
       <Route path='/' exact component={Index} />
-      <Route path='/list/' component={List} />
+      <Route path='/list/:id' component={List} />
+      <Route path='/home/' component={Home} />
     </Router>
   )
 }
