@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 
 function Jerry () {
+
   const [color, setColor] = useState('blue')
+
   function changeColor () {
     setColor(color === 'blue' ? 'red' : 'blue')
   }
+  
   return (
     <>
       <div>你好，我是Jerry</div>
